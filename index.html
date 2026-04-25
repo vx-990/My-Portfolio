@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zthero | Game Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color:#e5e7eb;
+  overflow-x:hidden;
+}
+
+nav {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 50px;
+  position:sticky;top:0;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+
+nav h1 {color:#60a5fa;font-weight:700}
+nav a {color:#cbd5f5;text-decoration:none;margin-left:25px;transition:.3s}
+nav a:hover {color:#60a5fa}
+
+.hero {
+  height:100vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+}
+
+.hero h2 {font-size:3rem;font-weight:700}
+.hero span {color:#60a5fa}
+
+.hero p {margin-top:15px;color:#94a3b8}
+
+.btn {
+  margin-top:25px;padding:14px 30px;
+  border:none;border-radius:10px;
+  background:linear-gradient(45deg,#3b82f6,#60a5fa);
+  color:white;font-weight:600;cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover {transform:scale(1.08);box-shadow:0 10px 30px rgba(59,130,246,.4)}
+
+section {padding:80px 60px}
+
+.section-title {
+  font-size:2rem;margin-bottom:30px;
+  border-left:5px solid #60a5fa;padding-left:15px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card {
+  background:rgba(15,23,42,.8);
+  border:1px solid rgba(255,255,255,0.05);
+  padding:25px;border-radius:20px;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,#3b82f6,transparent);
+  opacity:0;
+  transition:.5s;
+}
+
+.card:hover::before {opacity:.15}
+
+.card:hover {
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.skills span {
+  display:inline-block;
+  background:#1e293b;
+  padding:10px 14px;margin:6px;
+  border-radius:10px;
+}
+
+.socials a {
+  display:inline-block;margin:10px 10px 0 0;
+  color:#60a5fa;text-decoration:none;
+}
+
+.footer {
+  text-align:center;padding:40px;color:#64748b
+}
+
+/* glow cursor */
+.cursor {
+  position:fixed;
+  width:200px;height:200px;
+  background:radial-gradient(circle, rgba(59,130,246,.25), transparent 60%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+</style>
+</head>
+
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <h1>Zthero</h1>
+  <div>
+    <a href="#">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h2>I'm <span id="typing"></span></h2>
+  <p>I build games, UI systems, and immersive experiences.</p>
+  <button class="btn" onclick="scrollToProjects()">View My Work</button>
+</div>
+
+<section>
+  <h2 class="section-title">About Me</h2>
+  <p>
+    I'm a developer focused on Roblox and Unreal Engine. I create gameplay systems, UI designs, animations, and full game experiences. I enjoy building smooth, polished, and fun projects.
+  </p>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>FPS Game System</h3>
+      <p>Advanced multiplayer FPS with weapons, UI, and mechanics.</p>
+    </div>
+
+    <div class="card">
+      <h3>UI Systems</h3>
+      <p>Clean animated UI with transitions and effects.</p>
+    </div>
+
+    <div class="card">
+      <h3>Animation Work</h3>
+      <p>Custom emotes and smooth character animations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Unreal Projects</h3>
+      <p>3D game environments and gameplay systems.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills">
+    <span>Lua</span>
+    <span>JavaScript</span>
+    <span>UI Design</span>
+    <span>Game Systems</span>
+    <span>Animation</span>
+    <span>Unreal Engine</span>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p>Discord: vx_dev</p>
+  <p>Roblox: Frankthtan36</p>
+  <div class="socials">
+    <a href="https://youtube.com/@ZytheroHybridOfficialYT" target="_blank">YouTube</a>
+    <a href="https://twitch.tv/ztherocheats" target="_blank">Twitch</a>
+  </div>
+</section>
+
+<div class="footer">
+  <p>© 2026 Zthero. Built by me.</p>
+</div>
+
+<script>
+// typing effect
+const text = "Zthero";
+let i = 0;
+function type(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 100);
+  }
+}
+type();
+
+// scroll
+function scrollToProjects(){
+  document.getElementById("projects").scrollIntoView({behavior:"smooth"});
+}
+
+// cursor glow
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+</script>
+
+</body>
+</html>
