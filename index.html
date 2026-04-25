@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zthero | Game Developer</title>
+<title>Zthero | Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -11,49 +11,62 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
 body{
-  background: radial-gradient(circle at top,#0f172a,#020617);
+  background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#020617);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
   color:#e5e7eb;
-  overflow-x:hidden;
+}
+
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 nav{
-  display:flex;justify-content:space-between;
-  padding:20px 50px;
-  background:rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
-  position:sticky;top:0;
 }
 
-nav h1{color:#60a5fa}
-nav a{color:#cbd5f5;margin-left:20px;text-decoration:none}
-nav a:hover{color:#60a5fa}
+nav h1{
+  background:linear-gradient(45deg,#60a5fa,#3b82f6);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+nav a{
+  color:#cbd5f5;
+  margin-left:20px;
+  text-decoration:none;
+}
 
 .hero{
   height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
 }
 
 .hero h2{font-size:3rem}
 .hero span{color:#60a5fa}
-.hero p{margin-top:10px;color:#94a3b8}
 
 .btn{
-  margin-top:20px;padding:14px 30px;
-  border:none;border-radius:10px;
-  background:linear-gradient(45deg,#3b82f6,#60a5fa);
-  color:white;cursor:pointer;
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  background:#3b82f6;
+  color:white;
+  cursor:pointer;
 }
 
-section{padding:70px}
-
-.section-title{
-  font-size:2rem;
-  border-left:5px solid #60a5fa;
-  padding-left:10px;
-  margin-bottom:20px;
-}
+section{padding:70px 15%}
 
 .grid{
   display:grid;
@@ -62,54 +75,46 @@ section{padding:70px}
 }
 
 .card{
-  background:#111827;
-  padding:20px;border-radius:15px;
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
   transition:.3s;
 }
 
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
-.skills span{
-  display:inline-block;
-  background:#1e293b;
-  padding:8px 12px;
-  margin:5px;border-radius:8px;
-}
-
-.socials a{
-  display:inline-block;
-  margin:10px;
-  color:#60a5fa;
-}
-
-.footer{
-  text-align:center;
-  padding:30px;
-  color:#777;
-}
-
-/* cursor glow */
-.cursor{
+.music-panel{
   position:fixed;
-  width:200px;height:200px;
-  background:radial-gradient(circle,rgba(59,130,246,.25),transparent);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
+  bottom:20px;
+  right:20px;
+  background:rgba(0,0,0,0.5);
+  padding:15px;
+  border-radius:15px;
+}
+
+button{
+  border:none;
+  background:#3b82f6;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+input{
+  margin-top:10px;
+  width:100%;
 }
 </style>
 </head>
 
 <body>
 
-<div class="cursor" id="cursor"></div>
-
 <nav>
   <h1>Zthero</h1>
   <div>
-    <a href="#">Home</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
@@ -117,73 +122,35 @@ section{padding:70px}
 
 <div class="hero">
   <h2>I'm <span id="typing"></span></h2>
-  <p>Roblox & Unreal Developer • UI Designer • Animator</p>
-  <button class="btn" onclick="scrollToProjects()">View My Work</button>
+  <p>Roblox & Unreal Developer • UI Designer</p>
+  <button class="btn" onclick="scrollToProjects()">View Work</button>
 </div>
 
-<section>
-  <h2 class="section-title">About Me</h2>
-  <p>I create games, UI systems, scripts, and animations across Roblox and Unreal Engine.</p>
-</section>
-
 <section id="projects">
-  <h2 class="section-title">Projects</h2>
+  <h2>Projects</h2>
   <div class="grid">
-
-    <div class="card">
-      <h3>FPS Game</h3>
-      <p>Multiplayer FPS system with weapons and UI.</p>
-    </div>
-
-    <div class="card">
-      <h3>UI Systems</h3>
-      <p>Animated modern UI with smooth transitions.</p>
-    </div>
-
-    <div class="card">
-      <h3>Animations</h3>
-      <p>Custom emotes and character animations.</p>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Skills</h2>
-  <div class="skills">
-    <span>Lua</span>
-    <span>JavaScript</span>
-    <span>UI Design</span>
-    <span>Animation</span>
-    <span>Unreal Engine</span>
+    <div class="card"><h3>FPS Game</h3><p>Gun system + UI</p></div>
+    <div class="card"><h3>UI Systems</h3><p>Modern UI</p></div>
+    <div class="card"><h3>Animations</h3><p>Custom emotes</p></div>
   </div>
 </section>
 
 <section id="contact">
-  <h2 class="section-title">Contact</h2>
+  <h2>Contact</h2>
   <p>Discord: vx_dev</p>
   <p>Roblox: Frankthtan36</p>
-
-  <div class="socials">
-    <a href="https://youtube.com/@ZytheroHybridOfficialYT" target="_blank">YouTube</a>
-    <a href="https://twitch.tv/ztherocheats" target="_blank">Twitch</a>
-    <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
-  </div>
+  <a href="https://github.com/vx-990" target="_blank" rel="noopener noreferrer">GitHub</a>
 </section>
-
-<div class="footer">
-  <p>© 2026 Zthero</p>
-</div>
 
 <!-- 🎵 MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="Thebest.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="toggleMusic()" id="musicBtn"
-style="position:fixed;bottom:20px;right:20px;padding:12px;border:none;border-radius:10px;background:#3b82f6;color:white;cursor:pointer;">
-🔇
-</button>
+<div class="music-panel">
+  <button id="playBtn">🔇</button>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.4">
+</div>
 
 <script>
 // typing
@@ -192,7 +159,8 @@ let i=0;
 function type(){
   if(i<text.length){
     document.getElementById("typing").innerHTML+=text[i];
-    i++;setTimeout(type,100);
+    i++;
+    setTimeout(type,100);
   }
 }
 type();
@@ -202,21 +170,51 @@ function scrollToProjects(){
   document.getElementById("projects").scrollIntoView({behavior:"smooth"});
 }
 
-// cursor
-const cursor=document.getElementById("cursor");
-document.addEventListener("mousemove",e=>{
-  cursor.style.left=e.clientX+"px";
-  cursor.style.top=e.clientY+"px";
-});
-
-// music
+// MUSIC SYSTEM (FIXED)
 const music=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-let playing=false;
+const btn=document.getElementById("playBtn");
+const volume=document.getElementById("volume");
 
-function toggleMusic(){
+let playing=false;
+let unlocked=false;
+
+// unlock audio
+document.addEventListener("click",()=>{
+  if(!unlocked){
+    music.volume=volume.value;
+    unlocked=true;
+  }
+},{once:true});
+
+// volume
+volume.oninput=()=>{
+  music.volume=volume.value;
+};
+
+// fade in
+function fadeIn(){
+  music.volume=0;
+  music.play().catch(()=>{});
+  let vol=0;
+  let fade=setInterval(()=>{
+    if(vol<volume.value){
+      vol+=0.02;
+      music.volume=vol;
+    }else{
+      clearInterval(fade);
+    }
+  },100);
+}
+
+// button
+btn.onclick=()=>{
+  if(!unlocked){
+    alert("Click anywhere first");
+    return;
+  }
+
   if(!playing){
-    music.play();
+    fadeIn();
     btn.innerHTML="🔊";
     playing=true;
   }else{
@@ -224,7 +222,7 @@ function toggleMusic(){
     btn.innerHTML="🔇";
     playing=false;
   }
-}
+};
 </script>
 
 </body>
